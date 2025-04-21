@@ -1068,12 +1068,16 @@ font-size: 1.25rem;
 /* lawyer profile  */
 /* === MAIN LAYOUT === */
 .lawyer-profile {
-  padding: 1rem;
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-height: 76vh;
 }
 
 @media screen and (min-width: 768px) {
@@ -1354,15 +1358,225 @@ textarea {
 
 /* lawyer profile end  */
 
+/* driver profile  */
+.driverprofile-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+.driverprofile-radio-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #400945;
+}
+
+.driverprofile-radio-options input[type="radio"] {
+  accent-color: #400945;
+  cursor: pointer;
+}
+
+
+
+.driverprofile-card {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 2rem 5rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .driverprofile-card {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}
+
+.driverprofile-left {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.driverprofile-avatar {
+  background-color: #400945;
+  color: white;
+  font-size: 2rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.driverprofile-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.driverprofile-role {
+  font-size: 0.75rem;
+  color: #1e40af;
+  background-color: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+.driverprofile-status-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.driverprofile-status-item {
+  background-color: #fce7f3;
+  color: #400945;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.driverprofile-right {
+  flex: 1;
+  /* padding-left: 2rem; */
+}
+
+.driverprofile-form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1rem;
+}
+
+.driverprofile-radio-group p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.driverprofile-radio-options {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.875rem;
+}
+
+.driverprofile-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .driverprofile-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.driverprofile-form label {
+  font-size: 0.875rem;
+  color: #374151;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.driverprofile-form input,
+.driverprofile-form select {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  width: 100%;
+}
+
+.driverprofile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .driverprofile-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.update-btn {
+  background-color: #a21caf;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background-color: #86198f;
+}
+
+.driverprofile-action-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.suspend-btn {
+  background-color: #400945;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.suspend-btn:hover {
+  background-color: #2e0631;
+}
+
+.delete-btn {
+  background-color: #fce7f3;
+  color: #be185d;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #fbcfe8;
+}
+
+
+/* driver profile end  */
+
 /* user profile  */
 
 .user-profile-wrapper {
-  min-height: 100vh;
+  min-height: 65vh;
   background-color: #fff;
   display: flex;
   justify-content: center;
   padding: 2.5rem 1rem;
   max-width: 1000px;
+  margin: auto;
 }
 
 .user-profile-container {
@@ -1371,6 +1585,11 @@ textarea {
   gap: 1rem;
   max-width: 1300px;
   width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+ padding: 5rem;
+ padding-right: 2rem auto;
 }
 
 @media (min-width: 768px) {
@@ -1783,5 +2002,210 @@ textarea {
 .adduser-btn-icon {
   font-size: 0.75rem;
 }
-
 /* add user end  */
+
+/* add driver  */
+.adddriver-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.adddriver-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1.5rem;
+}
+
+.adddriver-container {
+  padding: 1rem 0;
+}
+
+.adddriver-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .adddriver-content-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.adddriver-form-section {
+  flex: 1;
+}
+
+.adddriver-form {
+  width: 100%;
+}
+
+.adddriver-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .adddriver-top-row {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.adddriver-label {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.adddriver-radio-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.adddriver-radio-options {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #400945;
+}
+
+.adddriver-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.adddriver-radio-option input[type="radio"] {
+  accent-color: #400945;
+  cursor: pointer;
+}
+
+.adddriver-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.adddriver-input-group input,
+.adddriver-input-group select {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+}
+
+.adddriver-input-group input:focus,
+.adddriver-input-group select:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+}
+
+.adddriver-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.adddriver-submit {
+  margin-top: 1.5rem;
+}
+
+.adddriver-btn {
+  background-color: #400945;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.adddriver-btn:hover {
+  background-color: #2e0631;
+}
+
+.adddriver-icon {
+  font-size: 0.75rem;
+}
+
+.adddriver-upload-section {
+  width: 100%;
+  max-width: 260px;
+  flex-shrink: 0;
+}
+
+.adddriver-upload-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.04);
+}
+
+.adddriver-upload-card h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.adddriver-upload-box {
+  border: 2px dashed #d1d5db;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.adddriver-upload-icon {
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+.adddriver-upload-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.adddriver-upload-actions .cancel {
+  background: none;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.adddriver-upload-actions .upload {
+  background-color: #400945;
+  color: white;
+  padding: 0.25rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.adddriver-upload-actions .upload:hover {
+  background-color: #2e0631;
+}
+
+
+/* add driver  end */
+

@@ -11,7 +11,7 @@ const AddDriver = () => {
         <div className="adddriver-content-wrapper">
           {/* Form Section */}
           <div className="adddriver-form-section">
-            <form className="adddriver-form">
+            <form className="adddriver-form" style={{ width: "100%" }}>
               <div className="adddriver-top-row">
                 <div className="adddriver-radio-group">
                   <label className="adddriver-label">Do you have a bike</label>
@@ -27,12 +27,20 @@ const AddDriver = () => {
 
                 <div className="adddriver-input-group">
                   <label className="adddriver-label">How many Bike</label>
-                  <input type="number" min="1" max="20" defaultValue={10} />
+                  <input
+                    type="number"
+                    min="1"
+                    max="20"
+                    defaultValue={10}
+                  />
                 </div>
 
                 <div className="adddriver-input-group">
                   <label className="adddriver-label">Bike Make</label>
-                  <input type="text" placeholder="e.g Q-link" />
+                  <input
+                    type="text"
+                    placeholder="e.g Q-link"
+                  />
                 </div>
               </div>
 
@@ -49,7 +57,7 @@ const AddDriver = () => {
                   ["Guarantor email address", "Guarantor email address"],
                   ["Guarantor State of residence", "--Select guarantor state of residence--", true],
                   ["Guarantor address", "Guarantor address"],
-                  ["Reset Password", "Enter new password", false, true],
+                  ["Reset Password", "Enter new password", false, true]
                 ].map(([label, placeholder, isSelect, isPassword], idx) => (
                   <div className="adddriver-input-group" key={idx}>
                     <label className="adddriver-label">{label}</label>
