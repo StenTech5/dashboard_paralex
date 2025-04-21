@@ -6,6 +6,154 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
+/* sign in page  */
+/* Container */
+.signin-ui-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.signin-ui-logo-img {
+  height: 64px;
+  margin-bottom: 1.5rem;
+  object-fit: contain;
+}
+
+
+/* Card */
+.signin-ui-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 55px 20px 55px 20px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Title */
+.signin-ui-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+/* Form Groups */
+.signin-ui-group {
+  margin-bottom: 1rem;
+}
+
+.signin-ui-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.signin-ui-input-wrapper {
+  position: relative;
+}
+
+.signin-ui-input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.signin-ui-input:focus {
+  border-color: #6b21a8;
+  box-shadow: 0 0 0 2px rgba(107, 33, 168, 0.4);
+}
+
+/* Icons */
+.signin-ui-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.signin-ui-eye {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* Options */
+.signin-ui-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.signin-ui-remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+}
+
+.signin-ui-checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #6b21a8;
+}
+
+/* Forgot */
+.signin-ui-forgot {
+  background: none;
+  border: none;
+  color: #6b21a8;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.signin-ui-forgot:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.signin-ui-button {
+  width: 100%;
+  background-color: #400945;
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.signin-ui-button:hover {
+  background-color: #581c87;
+}
+
+
+
+/* sign in page end */
+
 .logo {
   height: 40px;        
   width: auto;         
@@ -138,7 +286,10 @@ body{
   justify-content: space-between;
 }
 .dashtitle{
-color: #000;
+font-size: 1.25rem;
+  font-weight: 700;
+  color: #400945; /* purple-900 */
+  margin-bottom: 1rem;
 }
 
 .main-cards{
@@ -244,5 +395,1393 @@ color: #000;
   }
 }
 
+/* Userpage  */
+.user-wrapper {
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #400945; /* purple-900 */
+  margin-bottom: 1rem;
+}
+
+.user-add-btn {
+  background-color: #400945;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.user-add-btn:hover {
+  background-color: #3c127a;
+}
+
+.user-search-box {
+  margin-bottom: 16px;
+}
+
+.user-search-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.user-search-input:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
+}
+
+.user-table-container {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.user-table-head-row {
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+}
+
+.user-table-body-row {
+  border-top: 1px solid #e5e7eb;
+}
+
+.user-table-body-row:hover {
+  background-color: #f9fafb;
+}
+
+.user-name {
+  font-weight: 400;
+  color: #6b7280;
+}
+.user-date{
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.user-email {
+  color: #6b7280;
+}
+
+.user-role-badge {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.user-edit {
+  color: #400945;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.user-edit:hover {
+  text-decoration: underline;
+}
+
+.user-edit-icon {
+  font-size: 14px;
+}
+
+.user-checkbox {
+  accent-color: #400945;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.user-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.user-btn-prev {
+  padding: 8px 16px;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.user-btn-prev:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.user-btn-next {
+  padding: 8px 16px;
+  background-color: #400945;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.user-btn-next:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.user-arrow-icon {
+  font-size: 16px;
+}
+
+/* Userpage end  */
 
 
+/* lawyer page */
+.lawyer-wrapper {
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.lawyer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.lawyer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #400945; /* purple-900 */
+  margin-bottom: 1rem;
+}
+
+.lawyer-add-btn {
+  background-color: #400945;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lawyer-add-btn:hover {
+  background-color: #3c127a;
+}
+
+.lawyer-search-box {
+  margin-bottom: 16px;
+}
+
+.lawyer-search-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.lawyer-search-input:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
+}
+
+.lawyer-table-container {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.lawyer-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.lawyer-table th,
+.lawyer-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.lawyer-table-head-row {
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+}
+
+.lawyer-table-body-row {
+  border-top: 1px solid #e5e7eb;
+}
+
+.lawyer-table-body-row:hover {
+  background-color: #f9fafb;
+}
+
+.lawyer-name {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.lawyer-date{
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.lawyer-email {
+  color: #6b7280;
+}
+
+.lawyer-role-badge {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.lawyer-edit {
+  color: #400945;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.lawyer-edit:hover {
+  text-decoration: underline;
+}
+
+.lawyer-edit-icon {
+  font-size: 14px;
+}
+
+.lawyer-checkbox {
+  accent-color: #400945;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.lawyer-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.lawyer-btn-prev {
+  padding: 8px 16px;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lawyer-btn-prev:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lawyer-btn-next {
+  padding: 8px 16px;
+  background-color: #400945;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.lawyer-btn-next:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lawyer-arrow-icon {
+  font-size: 16px;
+}
+ /* lawyers page end  */
+
+ /* driver page  */
+
+ .driver-wrapper {
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.driver-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.driver-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #400945; /* purple-900 */
+  margin-bottom: 1rem;
+}
+
+.driver-add-btn {
+  background-color: #400945;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.driver-add-btn:hover {
+  background-color: #3c127a;
+}
+
+.driver-search-box {
+  margin-bottom: 16px;
+}
+
+.driver-search-input {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.driver-search-input:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.3);
+}
+
+.driver-table-container {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.driver-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.driver-table th,
+.driver-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.driver-table-head-row {
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+}
+
+.driver-table-body-row {
+  border-top: 1px solid #e5e7eb;
+}
+
+.driver-table-body-row:hover {
+  background-color: #f9fafb;
+}
+
+.driver-name {
+  font-weight: 400;
+  color: #6b7280;
+}
+.driver-date{
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.driver-email {
+  color: #6b7280;
+}
+
+.driver-role-badge {
+  display: inline-block;
+  background-color: #dbeafe;
+  color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.driver-edit {
+  color: #400945;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.driver-edit:hover {
+  text-decoration: underline;
+}
+
+.driver-edit-icon {
+  font-size: 14px;
+}
+
+.driver-checkbox {
+  accent-color: #400945;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.driver-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.driver-btn-prev {
+  padding: 8px 16px;
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.driver-btn-prev:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.driver-btn-next {
+  padding: 8px 16px;
+  background-color: #400945;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.driver-btn-next:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.driver-arrow-icon {
+  font-size: 16px;
+}
+ /* driver page ends */
+
+
+
+/* bail bond  */
+.bailbond-container {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937; /* gray-800 */
+}
+
+.bailbond-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #400945; /* purple-900 */
+  margin-bottom: 1rem;
+}
+
+.bailbond-search {
+  margin-bottom: 1rem;
+}
+
+.bailbond-search-input {
+  width: 100%;
+  max-width: 16rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.bailbond-search-input:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.5);
+}
+
+.bailbond-table-wrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow-x: auto;
+}
+
+.bailbond-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  color: #111827; /* gray-900 */
+}
+
+.bailbond-table thead {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.bailbond-table th,
+.bailbond-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.bail-name, .bail-id, .bail-date, .bail-amount {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.bailbond-table tbody tr {
+  border-top: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+.bailbond-status {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+
+.bailbond-view {
+  background-color: #f9a8d4;
+  color: white;
+  padding: 0.375rem 1rem;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bailbond-view:hover {
+  background-color: #f472b6;
+}
+
+.bailbond-pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .bailbond-pagination {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.bailbond-page-info {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.bailbond-pagination-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bailbond-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #1f2937;
+}
+
+.bailbond-btn:hover:not(:disabled) {
+  background-color: #d1d5db;
+}
+
+.bailbond-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bailbond-btn.primary {
+  background-color: #400945;
+  color: white;
+}
+/* bailbond page end  */
+
+/* lawyer profile  */
+/* === MAIN LAYOUT === */
+.lawyer-profile {
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .lawyer-profile {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}
+
+/* === LEFT SIDE === */
+.left-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .left-section {
+    width: 30%;
+    align-items: center;
+  }
+}
+
+.profile-summary {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #400945;
+  margin-top: 0.5rem;
+}
+
+.profile-role {
+  background-color: #dbeafe;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* === PRACTICE AREAS === */
+.practice-box-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.practice-box-caret {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%) rotate(45deg);
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-left: 1px solid #e5e7eb;
+  border-top: 1px solid #e5e7eb;
+  z-index: 10;
+}
+
+.practice-box {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.practice-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1rem;
+}
+
+.practice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.practice-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.practice-list input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #400945;
+  cursor: pointer;
+}
+
+/* === PRACTICE DROPDOWN === */
+.practice-dropdown {
+  width: 100%;
+  max-width: 220px;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.practice-dropdown label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-wrapper select {
+  appearance: none; /* hide default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  width: 100%;
+  padding-right: 2.5rem; /* space for icon */
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  pointer-events: none;
+}
+select:focus {
+  outline: 2px solid #400945;
+  outline-offset: 1px;
+}
+
+
+/* === RIGHT SIDE === */
+.right-section {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .right-section {
+    width: 70%;
+  }
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1.5rem;
+}
+
+/* === FORM GRIDS === */
+.info-grid,
+.label-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .label-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.info-grid label,
+.label-grid label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input,
+select,
+textarea {
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.625rem 0.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  height: 6rem;
+  line-height: 1.5;
+}
+
+.info-grid textarea {
+  grid-column: span 1;
+}
+
+@media screen and (min-width: 768px) {
+  .info-grid textarea {
+    grid-column: span 2;
+  }
+}
+
+/* === BUTTONS === */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn.purple {
+  background-color: #4c1d95;
+}
+
+.btn.fuchsia {
+  background-color: #86079d;
+}
+
+.btn.red {
+  background-color: #ef4444;
+}
+/* 
+.ml-auto {
+  margin-left: auto;
+} */
+
+/* === Force label visibility === */
+.label {
+  color: #393b3dc2; /* Tailwind slate-800 – dark gray */
+  font-size: 0.875rem;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* lawyer profile end  */
+
+/* user profile  */
+
+.user-profile-wrapper {
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  max-width: 1000px;
+}
+
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1300px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .user-profile-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.user-profile-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .user-profile-avatar-section {
+    width: 33.3333%;
+  }
+}
+
+.user-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  background-color: #400945;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.userp-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.user-role {
+  font-size: 0.875rem;
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-top: 0.25rem;
+}
+
+.user-profile-form-section {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .user-profile-form-section {
+    width: 66.6667%;
+  }
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1.5rem;
+}
+
+.user-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .user-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.5);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.update-btn {
+  background-color: #db2777;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.update-btn:hover {
+  background-color: #be185d;
+}
+
+.delete-btn {
+  background-color: #fce7f3;
+  color: #db2777;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #fbcfe8;
+}
+
+/* user profile ends */
+
+/* add lawyer  */
+
+.addlawyer-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.addlawyer-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1.5rem;
+}
+
+.addlawyer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .addlawyer-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.addlawyer-form-layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addlawyer-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .addlawyer-form-row {
+    flex-direction: row;
+  }
+}
+
+.addlawyer-form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addlawyer-form-group label {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.addlawyer-form-group input,
+.addlawyer-form-group textarea,
+.addlawyer-form-group select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  outline: none;
+  background-color: white;
+}
+
+.addlawyer-form-group input:focus,
+.addlawyer-form-group textarea:focus,
+.addlawyer-form-group select:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.addlawyer-align-end {
+  align-items: flex-end;
+}
+
+.addlawyer-one-third {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .addlawyer-one-third {
+    width: 33.3333%;
+  }
+}
+
+.addlawyer-btn {
+  background-color: #400945;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+.addlawyer-icon {
+  font-size: 10px;
+}
+
+
+.addlawyer-btn:hover {
+  background-color: #86079d;
+}
+
+.addlawyer-upload-box {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .addlawyer-upload-box {
+    width: 280px;
+  }
+}
+
+.addlawyer-upload-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.addlawyer-upload-card h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.addlawyer-upload-area {
+  border: 2px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+.addlawyer-upload-area span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.addlawyer-upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addlawyer-upload-actions .addlawyer-cancel {
+  background: transparent;
+  color: #4b5563;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+}
+
+.addlawyer-upload-actions .addlawyer-upload {
+  background-color: #400945;
+  color: white;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addlawyer-upload-actions .addlawyer-upload:hover {
+  background-color: #400945;
+}
+/* add lawyer ends  */
+
+/* add user  */
+
+.adduser-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.adduser-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #400945;
+  margin-bottom: 1.5rem;
+}
+
+.adduser-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.adduser-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .adduser-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.adduser-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.adduser-form-group label {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.adduser-form-group input,
+.adduser-form-group select {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+  background-color: #fff;
+}
+
+.adduser-form-group input:focus,
+.adduser-form-group select:focus {
+  border-color: #400945;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.adduser-btn-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.adduser-btn {
+  background-color: #400945;
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.adduser-btn:hover {
+  background-color: #86079d;
+}
+
+.adduser-btn-icon {
+  font-size: 0.75rem;
+}
+
+/* add user end  */
