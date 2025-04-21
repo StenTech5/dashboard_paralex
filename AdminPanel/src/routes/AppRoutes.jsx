@@ -31,7 +31,7 @@ const AppRoutes = () => {
         <Route path="driverprofile" element={<DriverProfile/>} />
         <Route path="addlawyer" element={<AddLawyer/>} />
         <Route path="adduser" element={<AddUser/>} />
-        <Route path="add-driver" element={<AddDriver/>} />
+        <Route path="adddriver" element={<AddDriver/>} />
       </Route>
     </Routes>
   );
