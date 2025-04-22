@@ -1,21 +1,29 @@
-import { useState } from 'react';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import { Outlet } from 'react-router-dom';
+import { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
+import { Outlet } from "react-router-dom";
+import "../App.css";
 
 const DashboardLayout = () => {
-  const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-
-  const OpenSidebar = () => {
-    setOpenSidebarToggle(!openSidebarToggle);
-  };
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="grid-container">
-      <Header OpenSidebar={OpenSidebar} />
-      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
-      <div className="main-container">
-        <Outlet /> {/* This is where pages like Home (dashboard), Lawyers, etc. will render */}
+    <div className="layout-container">
+      <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
+
+      {/* Mobile backdrop */}
+      {sidebarOpen && (
+        <div
+          className="sidebar-backdrop"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <div className="layout-main">
+        <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+        <div className="layout-content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

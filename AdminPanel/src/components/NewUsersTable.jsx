@@ -1,20 +1,80 @@
-import React, { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { HiArrowRight } from "react-icons/hi";
-import "../App.css";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { FaEdit } from 'react-icons/fa';
+import { HiArrowRight } from 'react-icons/hi';
+import '../App.css';
+import { Link } from 'react-router-dom';
 
 const usersData = [
-  { name: "Elizabeth Lopez", date: "2025-04-18", email: "elopez@yahoo.com", role: "User", selected: true },
-  { name: "Matthew Martinez", date: "2025-03-14", email: "mmartinez1997@gmail.com", role: "Lawyer", selected: true },
-  { name: "Elizabeth Hall", date: "2025-02-20", email: "elizabeth_hall_1998@gmail.com", role: "Driver", selected: false },
-  { name: "Maria White", date: "2025-02-12", email: "maria_white@hotmail.com", role: "User", selected: false },
-  { name: "Elizabeth Watson", date: "2025-02-08", email: "ewatson@yahoo.com", role: "Lawyer", selected: false },
-  { name: "Elizabeth Allen", date: "2025-01-19", email: "eallen@gmail.com", role: "Driver", selected: false },
-  { name: "Caleb Jones", date: "2024-10-18", email: "calebjones@gmail.com", role: "User", selected: false },
-  { name: "John Smith", date: "2024-09-10", email: "jsmith@gmail.com", role: "Lawyer", selected: false },
-  { name: "Jane Doe", date: "2024-08-22", email: "janedoe@gmail.com", role: "Driver", selected: false },
-  { name: "Peter Griffin", date: "2024-07-01", email: "pgriffin@gmail.com", role: "User", selected: false }
+  {
+    name: 'Elizabeth Lopez',
+    date: '2025-04-18',
+    email: 'elopez@yahoo.com',
+    role: 'User',
+    selected: true,
+  },
+  {
+    name: 'Matthew Martinez',
+    date: '2025-03-14',
+    email: 'mmartinez1997@gmail.com',
+    role: 'Lawyer',
+    selected: true,
+  },
+  {
+    name: 'Elizabeth Hall',
+    date: '2025-02-20',
+    email: 'elizabeth_hall_1998@gmail.com',
+    role: 'Driver',
+    selected: false,
+  },
+  {
+    name: 'Maria White',
+    date: '2025-02-12',
+    email: 'maria_white@hotmail.com',
+    role: 'User',
+    selected: false,
+  },
+  {
+    name: 'Elizabeth Watson',
+    date: '2025-02-08',
+    email: 'ewatson@yahoo.com',
+    role: 'Lawyer',
+    selected: false,
+  },
+  {
+    name: 'Elizabeth Allen',
+    date: '2025-01-19',
+    email: 'eallen@gmail.com',
+    role: 'Driver',
+    selected: false,
+  },
+  {
+    name: 'Caleb Jones',
+    date: '2024-10-18',
+    email: 'calebjones@gmail.com',
+    role: 'User',
+    selected: false,
+  },
+  {
+    name: 'John Smith',
+    date: '2024-09-10',
+    email: 'jsmith@gmail.com',
+    role: 'Lawyer',
+    selected: false,
+  },
+  {
+    name: 'Jane Doe',
+    date: '2024-08-22',
+    email: 'janedoe@gmail.com',
+    role: 'Driver',
+    selected: false,
+  },
+  {
+    name: 'Peter Griffin',
+    date: '2024-07-01',
+    email: 'pgriffin@gmail.com',
+    role: 'User',
+    selected: false,
+  },
 ];
 
 const UsersTable = () => {
@@ -43,7 +103,9 @@ const UsersTable = () => {
         <table className="user-table">
           <thead>
             <tr className="user-table-head-row">
-              <th><input type="checkbox" className="user-checkbox" /></th>
+              <th>
+                <input type="checkbox" className="user-checkbox" />
+              </th>
               <th>Name</th>
               <th>Date</th>
               <th>Email</th>
@@ -54,14 +116,26 @@ const UsersTable = () => {
           <tbody>
             {paginatedUsers.map((user, index) => (
               <tr key={index} className="user-table-body-row">
-                <td><input type="checkbox" className="user-checkbox" defaultChecked={user.selected} /></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    className="user-checkbox"
+                    defaultChecked={user.selected}
+                  />
+                </td>
                 <td className="user-name">{user.name}</td>
                 <td className="user-date">{user.date}</td>
                 <td className="user-email">{user.email}</td>
-                <td><span className="user-role-badge">{user.role}</span></td>
-                <td className="user-edit"> <Link to="/userprofile">
-                  <FaEdit className="user-edit-icon" />
-                </Link> Edit</td>
+                <td>
+                  <span className="user-role-badge">{user.role}</span>
+                </td>
+                <td className="user-edit">
+                  {' '}
+                  <Link to="/userprofile">
+                    <FaEdit className="user-edit-icon" />
+                    Edit
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

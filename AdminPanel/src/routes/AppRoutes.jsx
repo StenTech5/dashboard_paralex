@@ -12,6 +12,13 @@ import AddLawyer from '../pages/AddLawyer';
 import AddUser from '../pages/AddUser';
 import DriverProfile from '../pages/DriverProfile';
 import AddDriver from '../pages/AddDriver';
+import AdminSettings from '../pages/AdminSettings';
+import NotificationPage from '../pages/Notifications';
+import PostNewsForm from '../pages/PostNewsForm';
+import BailBondDownload from '../pages/BailBondDownload';
+import DeliveryRequest from '../pages/DeliveryRequest';
+import Transactions from '../pages/Transactions';
+import ErrorPage from '../pages/ErrorPage';
 
 const AppRoutes = () => {
   return (
@@ -32,6 +39,13 @@ const AppRoutes = () => {
         <Route path="addlawyer" element={<AddLawyer/>} />
         <Route path="adduser" element={<AddUser/>} />
         <Route path="adddriver" element={<AddDriver/>} />
+        <Route path="settings" element={<AdminSettings/>} />
+        <Route path="notification" element={<NotificationPage/>} />
+        <Route path="postnews" element={<PostNewsForm/>} />
+        <Route path="bailbonddownload" element={<BailBondDownload/>} />
+        <Route path="logistics" element={<DeliveryRequest/>} />
+        <Route path="transaction" element={<Transactions/>} />
+        <Route path="error" element={<ErrorPage/>} />
       </Route>
     </Routes>
   );

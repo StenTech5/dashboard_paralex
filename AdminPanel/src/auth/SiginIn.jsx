@@ -62,7 +62,6 @@ const SignIn = () => {
             <input type="checkbox" className="signin-ui-checkbox" />
             <span>Remember me</span>
           </label>
-          <button className="signin-ui-forgot">Forgot password?</button>
         </div>
 
         {/* Sign In Button */}
