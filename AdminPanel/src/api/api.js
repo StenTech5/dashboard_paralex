@@ -25,10 +25,10 @@ adminApi.interceptors.request.use((config) => {
 adminApi.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.status === 401 || error.response?.status === 403) {
+        if (error.response?.status === 401 ) {
             localStorage.removeItem("adminToken");
             // window.location.href = `${ADMIN_LOGIN_URL}?message=admin-session-expired`;   //Redirect with message                
-            // window.location.href = `?message=admin-session-expired`;   //Redirect with message                
+            window.location.href = `?message=admin-session-expired`;   //Redirect with message                
             
         }
         return Promise.reject(error);
@@ -38,7 +38,7 @@ adminApi.interceptors.response.use(
 /** handleAdminRequest - to handle every admin related api request */
 const handleAdminRequest = async(method, url, data=null, timeout=timeoutTime) => {
     try {
-        const response = await adminApi({ method, url, data, timeout });
+        const response = await adminApi({ method, url, data });
         return response.data;
     } catch (error) {
         handleRequestError(error);
@@ -81,7 +81,6 @@ export const getAdminNotifications = async (pageNum=1, limit=15) => {
 export const handleAdminLogin = async (formData) => {
     return handleAdminRequest('POST', 'admin/login', formData);
 }
-
 
 /** handleAdminForgotPassword  */
 export const handleAdminForgotPassword = async (formData) => {
