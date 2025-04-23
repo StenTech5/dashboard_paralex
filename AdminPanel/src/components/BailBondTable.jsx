@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const initialData = [
   { id: "001", name: "John Doe", date: "2023-09-15", amount: "₦5,000", status: "Pending" },
@@ -36,7 +37,6 @@ const BailBondTable = () => {
   return (
     <div className="bailbond-container">
       <h2 className="bailbond-title">Bail bond</h2>
-
       <div className="bailbond-search">
         <input
           type="text"
@@ -78,7 +78,7 @@ const BailBondTable = () => {
                   </select>
                 </td>
                 <td>
-                  <button className="bailbond-view">View</button>
+                  <Link to="/bailbonddownload"><button className="bailbond-view">View</button></Link>
                 </td>
               </tr>
             ))}

@@ -99,6 +99,7 @@ const SignIn = () => {
             </div>
           </div>
 
+ 
           {/* Remember Me and Forgot */}
           <div className="signin-ui-options">
             <label className="signin-ui-remember">
@@ -110,6 +111,15 @@ const SignIn = () => {
 
           {/* Sign In Button */}
           <button className="signin-ui-button"> { loading? "Loading..." : "Sign In"} </button>
+
+        {/* Remember Me and Forgot */}
+        <div className="signin-ui-options">
+          <label className="signin-ui-remember">
+            <input type="checkbox" className="signin-ui-checkbox" />
+            <span>Remember me</span>
+          </label>
+        </div>
+
 
       </form>
 
