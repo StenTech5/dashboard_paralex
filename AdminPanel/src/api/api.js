@@ -1,8 +1,8 @@
 import axios from "axios";
-import { ADMIN_LOGIN_URL, BASE_URL, MGT_LOGIN_URL } from "../utils/constants";
-import { getAdminToken } from "./authHelpers";
+import { ADMIN_LOGIN_URL, BASE_URL } from "../utils/constants";
+import { getAdminToken } from "./authHelper";
 
-const timeoutTime = 25 * 1000; //25 seconds
+const timeoutTime = 100 * 1000; //25 seconds
 
 // Configure admin and user baseUrl for all requests
 const adminApi = axios.create({
@@ -14,6 +14,7 @@ const adminApi = axios.create({
 // Admin - Request interceptor for adding (admin) token
 adminApi.interceptors.request.use((config) => {
     const adminToken = getAdminToken();
+    console.log("Admin Token" , adminToken);
     if (adminToken) {
         config.headers['Authorization'] = `Bearer ${adminToken}`;
     }
@@ -24,9 +25,10 @@ adminApi.interceptors.request.use((config) => {
 adminApi.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response.status === 401 || error.response.status === 403) {
+        if (error.response?.status === 401 ) {
             localStorage.removeItem("adminToken");
-            window.location.href = `${ADMIN_LOGIN_URL}?message=admin-session-expired`;   //Redirect with message                
+            // window.location.href = `${ADMIN_LOGIN_URL}?message=admin-session-expired`;   //Redirect with message                
+            window.location.href = `?message=admin-session-expired`;   //Redirect with message                
             
         }
         return Promise.reject(error);
@@ -36,7 +38,7 @@ adminApi.interceptors.response.use(
 /** handleAdminRequest - to handle every admin related api request */
 const handleAdminRequest = async(method, url, data=null, timeout=timeoutTime) => {
     try {
-        const response = await adminApi({ method, url, data, timeout });
+        const response = await adminApi({ method, url, data });
         return response.data;
     } catch (error) {
         handleRequestError(error);
@@ -46,10 +48,13 @@ const handleAdminRequest = async(method, url, data=null, timeout=timeoutTime) =>
 /** handleRequestError - Generic error handler for request handler functions (handleAdminRequest function and handleUserRequest function) */
 const handleRequestError = (error) => {
     // If any API error (from backend api )
+    console.log("Error ", error);
     if(error.response) {
+    console.log("Error ", error);
+
         throw {
             success: false,
-            status: error.response.status,
+            status: error.response?.status || 400,
             error: error.response.data?.error || "An error occurred",
             errors: error.response.data?.errors || []
         }
@@ -74,7 +79,12 @@ export const getAdminNotifications = async (pageNum=1, limit=15) => {
 
 /** handleAdminLogin - API request handler function that handles admin login */ 
 export const handleAdminLogin = async (formData) => {
-    return handleAdminRequest('POST', 'api/v1/admin/login', formData);
+    return handleAdminRequest('POST', 'admin/login', formData);
+}
+
+/** Admin Get Users */
+export const adminGetUsers = async (pageNum=1, limit=15) => {
+    return handleAdminRequest('GET', `admin/get-all-users?pageNumber=${pageNum}&pageSize=${limit}`)
 }
 
 
@@ -112,10 +122,6 @@ export const deleteUser = async (formData) => {
     return handleAdminRequest('POST', 'api/v1/admin/delete-user', formData);
 }
 
-/** Admin Get Users */
-export const adminGetUsers = async (pageNum=1, limit=15) => {
-    return handleAdminRequest('GET', `api/v1/admin/users?page=${pageNum}&limit=${limit}`)
-}
 
 /** Admin Search Users */
 export const adminSearchUsers = async (searchTerm, pageNum=1, limit=15) => {
