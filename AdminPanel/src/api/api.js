@@ -82,6 +82,12 @@ export const handleAdminLogin = async (formData) => {
     return handleAdminRequest('POST', 'admin/login', formData);
 }
 
+/** Admin Get Users */
+export const adminGetUsers = async (pageNum=1, limit=15) => {
+    return handleAdminRequest('GET', `admin/get-all-users?pageNumber=${pageNum}&pageSize=${limit}`)
+}
+
+
 /** handleAdminForgotPassword  */
 export const handleAdminForgotPassword = async (formData) => {
     return handleAdminRequest('POST', 'api/v1/admin/forgot-password', formData);
@@ -116,10 +122,6 @@ export const deleteUser = async (formData) => {
     return handleAdminRequest('POST', 'api/v1/admin/delete-user', formData);
 }
 
-/** Admin Get Users */
-export const adminGetUsers = async (pageNum=1, limit=15) => {
-    return handleAdminRequest('GET', `api/v1/admin/users?page=${pageNum}&limit=${limit}`)
-}
 
 /** Admin Search Users */
 export const adminSearchUsers = async (searchTerm, pageNum=1, limit=15) => {
