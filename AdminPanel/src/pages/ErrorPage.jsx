@@ -11,7 +11,7 @@ const ErrorPage = () => {
       <p className="error-text">
         The page you are looking for might have been removed, or is temporarily unavailable.
       </p>
-      <button className="error-btn" onClick={() => navigate("/")}>
+      <button className="error-btn" onClick={() => navigate("/admin/dashboard")}>
         BACK TO HOME
       </button>
     </div>

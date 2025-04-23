@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { adminGetLawyers } from '../api/api';
+import { getDisplayName } from '../utils/userUtils';
+import { dateTimeArrayToDate } from '../utils/getCurrentDateTime';
 
 const lawyersData = [
   {
@@ -78,11 +81,14 @@ const lawyersData = [
 ];
 
 const LawyerTable = () => {
+
+  const [bgLoading, setBgLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+  const [lawyers, setLawyers] = useState([]);
 
-  const filteredLawyers = lawyersData.filter(
+  const filteredLawyers = lawyers.filter(
     (lawyer) =>
       lawyer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lawyer.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -99,6 +105,26 @@ const LawyerTable = () => {
       setCurrentPage(page);
     }
   };
+
+  const fetchLawyers = async(page=currentPage, limit=itemsPerPage) => {
+        try{
+  
+          const lawyersResponse = await adminGetLawyers(page, limit);
+          console.log("Lawyers Response ", lawyersResponse);
+          setLawyers(lawyersResponse.reverse());
+  
+        }  catch (error) {
+          console.error("Error fetching recent lawyers ", error);
+          const errorMessage = error.error || "Something went wrong in retrieving lawyers.";
+          alert(errorMessage);
+        } finally {
+          setBgLoading(false);
+        }
+    }
+    
+    useEffect(() => {
+      fetchLawyers();
+    }, [])
 
   return (
     <div className="lawyer-wrapper">
@@ -141,14 +167,14 @@ const LawyerTable = () => {
                     defaultChecked={lawyer.selected}
                   />
                 </td>
-                <td className="lawyer-name">{lawyer.name}</td>
-                <td className="lawyer-name">{lawyer.date}</td>
-                <td className="lawyer-email">{lawyer.email}</td>
+                <td className="lawyer-name">{getDisplayName(lawyer?.user)}</td>
+                <td className="lawyer-name">{dateTimeArrayToDate(lawyer?.time)}</td>
+                <td className="lawyer-email">{lawyer.user?.email}</td>
                 <td>
-                  <span className="lawyer-role-badge">{lawyer.role}</span>
+                  <span className="lawyer-role-badge">{lawyer?.user?.userType}</span>
                 </td>
                 <td className="lawyer-edit">
-                  <Link to="/lawyerprofile" className="lawyer-edit">
+                  <Link to={`/admin/lawyer/${lawyer.id}`} className="lawyer-edit">
                     <FaEdit className="lawyer-edit-icon" /> Edit
                   </Link>
                 </td>

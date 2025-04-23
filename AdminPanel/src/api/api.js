@@ -87,6 +87,11 @@ export const adminGetUsers = async (pageNum=1, limit=15) => {
     return handleAdminRequest('GET', `admin/get-all-users?pageNumber=${pageNum}&pageSize=${limit}`)
 }
 
+/** Admin Get Lawyers */
+export const adminGetLawyers = async (pageNum=1, limit=15) => {
+    return handleAdminRequest('GET', `service-provider/lawyer/profile/?pageNumber=${pageNum}&pageSize=${limit}`)
+}
+
 
 /** handleAdminForgotPassword  */
 export const handleAdminForgotPassword = async (formData) => {

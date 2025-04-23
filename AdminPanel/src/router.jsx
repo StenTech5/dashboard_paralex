@@ -13,6 +13,7 @@ import AddLawyer from './pages/AddLawyer';
 import AddUser from './pages/AddUser';
 import DriverProfile from './pages/DriverProfile';
 import AddDriver from './pages/AddDriver';
+import ErrorPage from "./pages/ErrorPage";
 
 export const router = createBrowserRouter([
   // Route definition
@@ -104,7 +105,7 @@ export const router = createBrowserRouter([
   {
     path: "*",
     // element: <Error404Page />
-    element: <h2>OOPs! Page Not Found!</h2>
+    element: <ErrorPage />
   }
 
 ]);

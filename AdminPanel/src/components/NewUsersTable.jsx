@@ -95,27 +95,6 @@ const UsersTable = () => {
                   <FaEdit className="user-edit-icon" />
                 </Link> Edit</td>
 
-                <td>
-                  <input
-                    type="checkbox"
-                    className="user-checkbox"
-                    defaultChecked={user.selected}
-                  />
-                </td>
-                <td className="user-name">{user.name}</td>
-                <td className="user-date">{user.date}</td>
-                <td className="user-email">{user.email}</td>
-                <td>
-                  <span className="user-role-badge">{user.role}</span>
-                </td>
-                <td className="user-edit">
-                  {' '}
-                  <Link to="/userprofile">
-                    <FaEdit className="user-edit-icon" />
-                    Edit
-                  </Link>
-                </td>
-
               </tr>
             ))}
           </tbody>

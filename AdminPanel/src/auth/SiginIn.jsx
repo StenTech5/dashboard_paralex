@@ -100,26 +100,16 @@ const SignIn = () => {
           </div>
 
  
-          {/* Remember Me and Forgot */}
+          {/* Remember Me */}
           <div className="signin-ui-options">
             <label className="signin-ui-remember">
               <input type="checkbox" className="signin-ui-checkbox" />
               <span>Remember me</span>
             </label>
-            <button className="signin-ui-forgot">Forgot password?</button>
           </div>
 
           {/* Sign In Button */}
           <button className="signin-ui-button"> { loading? "Loading..." : "Sign In"} </button>
-
-        {/* Remember Me and Forgot */}
-        <div className="signin-ui-options">
-          <label className="signin-ui-remember">
-            <input type="checkbox" className="signin-ui-checkbox" />
-            <span>Remember me</span>
-          </label>
-        </div>
-
 
       </form>
 
