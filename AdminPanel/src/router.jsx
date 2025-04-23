@@ -14,6 +14,11 @@ import AddUser from './pages/AddUser';
 import DriverProfile from './pages/DriverProfile';
 import AddDriver from './pages/AddDriver';
 import ErrorPage from "./pages/ErrorPage";
+import NotificationPage from "./pages/Notifications";
+import DeliveryRequest from "./pages/DeliveryRequest";
+import Transactions from "./pages/Transactions";
+import BailBondDownload from "./pages/BailBondDownload";
+import PostNewsForm from "./pages/PostNewsForm";
 
 export const router = createBrowserRouter([
   // Route definition
@@ -94,17 +99,31 @@ export const router = createBrowserRouter([
         path: "driver/:driverId", // Lawyer details page
         element: <DriverProfile />,
       },
-    //   {
-    //     path: "notifications",
-    //     element: <Notifications />,
-    //   },
-  
+      {
+        path: "notifications",
+        element: <NotificationPage />,
+      },
+      {
+        path: "logistics",
+        element: <DeliveryRequest />,
+      },
+      {
+        path: "transaction",
+        element: <Transactions />,
+      },
+      {
+        path: "bailbonddownload",
+        element: <BailBondDownload />
+      },
+      {
+        path: "post-news",
+        element: <PostNewsForm />
+      }
     
     ],
   },
   {
     path: "*",
-    // element: <Error404Page />
     element: <ErrorPage />
   }
 

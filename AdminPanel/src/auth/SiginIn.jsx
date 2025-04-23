@@ -6,6 +6,7 @@ import logo from "../assets/favicon.png"; // Make sure your logo is placed corre
 import { useNavigate } from "react-router-dom";
 import { handleAdminLogin } from "../api/api";
 import { setAdminToken } from "../api/authHelper";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,8 @@ const SignIn = () => {
       console.log("Error ", error);
       const errMessage = error.error || "Failed to Login. Something went wrong";
       // alert(errMessage);
+      toast.error(errMessage);
+      
       setErrorMessage(errMessage);
     } finally {
       setLoading(false);
@@ -44,6 +47,9 @@ const SignIn = () => {
 
   return (
     <div className="signin-ui-container">
+
+      <ToastContainer position="top-right" autoClose={3000} />
+
       {/* Logo Image */}
       <img src={logo} alt="Paralex Logo" className="signin-ui-logo-img" />
 

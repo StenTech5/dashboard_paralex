@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { adminGetUsers } from '../api/api';
+import { dateTimeArrayToDate } from '../utils/getCurrentDateTime';
+import { getDisplayName } from '../utils/userUtils';
+import Loader from './Loader';
 
 const usersData = [
   {
@@ -78,14 +82,17 @@ const usersData = [
 ];
 
 const UsersTable = () => {
+
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+  const [users, setUsers] = useState([]);
 
-  const filteredUsers = usersData.filter(
+  const filteredUsers = users.filter(
     (user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      user?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user?.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
@@ -100,11 +107,31 @@ const UsersTable = () => {
     }
   };
 
+   const fetchUsers = async(page=currentPage, limit=itemsPerPage) => {
+        try{
+  
+          const usersResponse = await adminGetUsers(page, limit);
+          console.log("Users Response ", usersResponse);
+          setUsers(usersResponse.reverse());
+  
+        }  catch (error) {
+          console.error("Error fetching recent users ", error);
+          const errorMessage = error.error || "Something went wrong in retrieving new users.";
+          alert(errorMessage);
+        } finally {
+          setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+      fetchUsers();
+    })
+
   return (
     <div className="user-wrapper">
       <div className="user-header">
         <h2 className="user-title">Users</h2>
-        <Link to="/adduser"><button className="user-add-btn">+ Add User</button></Link>
+        <Link to="/admin/add-user"><button className="user-add-btn">+ Add User</button></Link>
       </div>
 
       <div className="user-search-box">
@@ -118,6 +145,9 @@ const UsersTable = () => {
       </div>
 
       <div className="user-table-container">
+
+      { loading? <Loader /> : null}
+
         <table className="user-table">
           <thead>
             <tr className="user-table-head-row">
@@ -132,20 +162,21 @@ const UsersTable = () => {
             </tr>
           </thead>
           <tbody>
+
             {paginatedUsers.map((user, index) => (
               <tr key={index} className="user-table-body-row">
                 <td>
                   <input
                     type="checkbox"
                     className="user-checkbox"
-                    defaultChecked={user.selected}
+                    defaultChecked={user?.selected}
                   />
                 </td>
-                <td className="user-name">{user.name}</td>
-                <td className="user-date">{user.date}</td>
+                <td className="user-name"> { getDisplayName(user)}  </td>
+                <td className="user-date">{dateTimeArrayToDate(user?.time)}</td>
                 <td className="user-email">{user.email}</td>
                 <td>
-                  <span className="user-role-badge">{user.role}</span>
+                  <span className="user-role-badge">{user.userType}</span>
                 </td>
                 <td className="user-edit">
                   <Link to="/userprofile">

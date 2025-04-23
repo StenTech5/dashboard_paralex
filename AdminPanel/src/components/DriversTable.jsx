@@ -104,7 +104,7 @@ const DriversTable = () => {
     <div className="driver-wrapper">
       <div className="driver-header">
         <h2 className="driver-title">Drivers</h2>
-        <Link to="/adddriver"><button className="driver-add-btn">+ Add Driver</button></Link>
+        <Link to="/admin/add-driver"><button className="driver-add-btn">+ Add Driver</button></Link>
       </div>
 
       <div className="driver-search-box">

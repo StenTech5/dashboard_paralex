@@ -129,28 +129,28 @@ const statData = [
     count: '300',
     icon: <PiUsersThreeFill />,
     class: 'bg-users',
-    route: '/users',
+    route: '/admin/users',
   },
   {
     title: 'Lawyers',
     count: '140',
     icon: <GiClawHammer />,
     class: 'bg-lawyers',
-    route: '/lawyers',
+    route: '/admin/lawyers',
   },
   {
     title: 'Bail Bond',
     count: '257',
     icon: <IoMdNotifications />,
     class: 'bg-bailbond',
-    route: '/bailbond',
+    route: '/admin/bailbond',
   },
   {
     title: 'Drivers',
     count: '89',
     icon: <BiSolidBusSchool />,
     class: 'bg-drivers',
-    route: '/drivers',
+    route: '/admin/drivers',
   },
 ];
 

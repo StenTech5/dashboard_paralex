@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { adminGetLawyers } from '../api/api';
 import { getDisplayName } from '../utils/userUtils';
 import { dateTimeArrayToDate } from '../utils/getCurrentDateTime';
+import { toast, ToastContainer } from 'react-toastify';
+import Loader from './Loader';
 
 const lawyersData = [
   {
@@ -90,8 +92,8 @@ const LawyerTable = () => {
 
   const filteredLawyers = lawyers.filter(
     (lawyer) =>
-      lawyer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lawyer.email.toLowerCase().includes(searchTerm.toLowerCase())
+      lawyer?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      lawyer?.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredLawyers.length / itemsPerPage);
@@ -116,7 +118,8 @@ const LawyerTable = () => {
         }  catch (error) {
           console.error("Error fetching recent lawyers ", error);
           const errorMessage = error.error || "Something went wrong in retrieving lawyers.";
-          alert(errorMessage);
+          // alert(errorMessage);
+          toast.error(errorMessage);
         } finally {
           setBgLoading(false);
         }
@@ -128,9 +131,12 @@ const LawyerTable = () => {
 
   return (
     <div className="lawyer-wrapper">
+
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+
       <div className="lawyer-header">
         <h2 className="lawyer-title">Lawyers</h2>
-        <Link to="/addlawyer" ><button className="lawyer-add-btn">+ Add Lawyer</button></Link>
+        <Link to="/admin/add-lawyer" ><button className="lawyer-add-btn">+ Add Lawyer</button></Link>
       </div>
 
       <div className="lawyer-search-box">
@@ -144,6 +150,9 @@ const LawyerTable = () => {
       </div>
 
       <div className="lawyer-table-container">
+
+      { bgLoading? <Loader /> : null}
+
         <table className="lawyer-table">
           <thead>
             <tr className="lawyer-table-head-row">
@@ -158,6 +167,7 @@ const LawyerTable = () => {
             </tr>
           </thead>
           <tbody>
+
             {paginatedLawyers.map((lawyer, index) => (
               <tr key={index} className="lawyer-table-body-row">
                 <td>

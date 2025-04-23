@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AiFillDashboard, AiOutlineSetting } from 'react-icons/ai';
 import { PiUsersThreeFill } from 'react-icons/pi';
 import { GiClawHammer } from 'react-icons/gi';
@@ -15,6 +15,7 @@ import { BsFillGearFill } from 'react-icons/bs';
 import { MdPostAdd } from 'react-icons/md';
 import { GrTransaction } from "react-icons/gr";
 import { IoIosLogOut } from "react-icons/io";
+import { logoutAdmin } from '../api/authHelper';
 
 const navLinks = [
   { to: ADMIN_DASHBOARD_URL, label: 'Dashboard', icon: <AiFillDashboard /> },
@@ -30,13 +31,16 @@ const navLinks = [
   },
   { to: '/admin/bims-system', label: 'BIMS', icon: <BsFillGearFill /> },
   { to: '/admin/transaction', label: 'Transactions', icon: <GrTransaction/> },
-  { to: '/admin/verify-lawyer', label: 'Verify Lawyer', icon: <GiClawHammer /> },
-  { to: '/admin/postnews', label: 'Post News', icon: <MdPostAdd /> },
+  { to: 'https://www.nigerianbar.org.ng/find-a-lawyer', label: 'Verify Lawyer', icon: <GiClawHammer /> },
+  { to: '/admin/post-news', label: 'Post News', icon: <MdPostAdd /> },
   { to: '/admin/settings', label: 'Admin Settings', icon: <FaGears /> },
-  { to: '/', label: 'Logout', icon: <IoIosLogOut/> },
+  // { to: '/', label: 'Logout', icon: <IoIosLogOut/> },
 ];
 
 const Sidebar = ({ open, setOpen }) => {
+
+  const navigate = useNavigate(); //Initialize the navigate function
+
   return (
     <aside className={`sidebar ${open ? 'sidebar-open' : ''}`}>
       {open && (
@@ -55,6 +59,7 @@ const Sidebar = ({ open, setOpen }) => {
             <NavLink
               key={index}
               to={link.to}
+              target={link.label == "Verify Lawyer" || link.label == "LICS Verification" || link.label == "BIMS" ? '_blank' : '_self' }
               className={({ isActive }) =>
                 `sidebar-link ${isActive ? 'active' : ''}`
               }
@@ -65,62 +70,22 @@ const Sidebar = ({ open, setOpen }) => {
             </NavLink>
           ))}
 
+            <NavLink
+              key={"logout"}
+              to={"/"}
+              className={({ isActive }) =>
+                `sidebar-link ${isActive ? 'active' : ''}`
+              }
+              onClick={() => logoutAdmin() && setOpen(false) } // closes sidebar on mobile link click
+            >
+              <span className="sidebar-icon">{<IoIosLogOut/>}</span>
+              <span className="sidebar-label">{"Logout"}</span>
+            </NavLink>
+
+
         </nav>
       </div>
 
-
-      {/* <ul className="sidebar-list">
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_DASHBOARD_URL}>
-            <AiFillDashboard className="icon" /> Overview
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_USERS_URL}>
-            <PiUsersThreeFill className="icon" /> Users
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_LAWYERS_URL}>
-            <GiClawHammer className="icon" /> Lawyers
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_DRIVERS_URL}>
-            <BiSolidBusSchool className="icon" /> Drivers
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_BAILBOND_URL}>
-            <FaUserShield className="icon" /> Bailbond
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_LICSVERIFICATION_URL}>
-            <IoIosCheckmarkCircle className="icon" /> LICS Verification
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_BIMSSYSTEM_URL}>
-            <FaGears className="icon" /> BIMS System
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_VERIFYLAWYER_URL}>
-            <GiClawHammer className="icon" /> Verify Lawyer
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_NOTIFICATIONS_URL}>
-            <IoMdNotifications className="icon" /> Notification
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link to={ADMIN_SETTINGS_URL}>
-            <BsFillGearFill className="icon" /> Settings
-          </Link>
-        </li>
-      </ul> */}
 
       <div className="sidebar-bottom">
         <div className="avatar-wrapper">

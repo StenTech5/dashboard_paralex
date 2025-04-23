@@ -55,6 +55,7 @@ import {
   FaCog,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { logoutAdmin } from '../api/authHelper';
 
 const Header = ({ toggleSidebar }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -89,7 +90,7 @@ const Header = ({ toggleSidebar }) => {
 
       <div className="header-controls">
         <div className="header-icon header-notification">
-          <Link to="notification">
+          <Link to="notifications">
             <IoMdNotificationsOutline />
           </Link>
         </div>
@@ -121,7 +122,7 @@ const Header = ({ toggleSidebar }) => {
                     <span>Account Setting</span>
                   </div>
                 </Link>
-                <Link to="error">
+                <Link to="/" onClick={() => logoutAdmin()}>
                   <div className="profile-item">
                     <FaSignOutAlt className="profile-item-icon" />
                     <span>Log out</span>
