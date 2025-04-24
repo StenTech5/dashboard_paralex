@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEnvelope, FaLock, FaSpinner } from "react-icons/fa";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import "../App.css";
 import logo from "../assets/favicon.png"; // Make sure your logo is placed correctly
@@ -13,8 +13,8 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate(); //Initialize the navigate function
-  const [showPassword, setShowPassword] = useState(false); //For Password visibility
+  const navigate = useNavigate(); // Initialize the navigate function
+  const [showPassword, setShowPassword] = useState(false); // For Password visibility
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -22,12 +22,11 @@ const SignIn = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    setLoading(true);   //Set loading to true
+    setLoading(true);
     setErrorMessage("");
 
     try {
-
-      const response = await handleAdminLogin({ email, password })
+      const response = await handleAdminLogin({ email, password });
       console.log("Response ", response);
       setAdminToken(response.token);
       setEmail("");
@@ -36,28 +35,23 @@ const SignIn = () => {
     } catch (error) {
       console.log("Error ", error);
       const errMessage = error.error || "Failed to Login. Something went wrong";
-      // alert(errMessage);
       toast.error(errMessage);
-      
       setErrorMessage(errMessage);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="signin-ui-container">
-
       <ToastContainer position="top-right" autoClose={3000} />
 
       {/* Logo Image */}
       <img src={logo} alt="Paralex Logo" className="signin-ui-logo-img" />
 
-        {/* Card */}
-        <div className="signin-ui-card">
-
-        <form onSubmit={handleSubmit} >
-
+      {/* Card */}
+      <div className="signin-ui-card">
+        <form onSubmit={handleSubmit}>
           <h2 className="signin-ui-title">Sign in</h2>
 
           {/* Email */}
@@ -74,7 +68,7 @@ const SignIn = () => {
                 name="email"
                 id="email"
                 value={email}
-                onChange={ (evt) => setEmail(evt.target.value)}
+                onChange={(evt) => setEmail(evt.target.value)}
               />
             </div>
           </div>
@@ -94,7 +88,6 @@ const SignIn = () => {
                 id="password"
                 value={password}
                 onChange={(evt) => setPassword(evt.target.value)}
-
               />
               <span
                 className="signin-ui-eye"
@@ -105,7 +98,6 @@ const SignIn = () => {
             </div>
           </div>
 
- 
           {/* Remember Me */}
           <div className="signin-ui-options">
             <label className="signin-ui-remember">
@@ -115,13 +107,24 @@ const SignIn = () => {
           </div>
 
           {/* Sign In Button */}
-          <button className="signin-ui-button"> { loading? "Loading..." : "Sign In"} </button>
-
-      </form>
-
-        </div>
+          <button
+            className="signin-ui-button"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <FaSpinner className="spinner" /> Loading...
+              </>
+            ) : (
+              "Sign In"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
 export default SignIn;
+
