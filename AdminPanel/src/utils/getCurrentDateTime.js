@@ -31,11 +31,17 @@ export const getCurrentDateTime = (date) => {
 
 export const dateTimeArrayToDate = (dateTimeArray) => {
 
-  console.log("date time", dateTimeArray);
+  // console.log("date time", dateTimeArray);
   let dayjsDate;
   // If no date is passed, use todays' date
-  if (dateTimeArray.length < 7) {
+  if (dateTimeArray.length < 3) {
     dayjsDate = new Date();
+  } else if (dateTimeArray.length >= 3 && dateTimeArray.length < 7) {
+    dayjsDate = dayjs(new Date(
+      dateTimeArray[0],       // year
+      dateTimeArray[1] - 1,   // month (0-based)
+      dateTimeArray[2],       // day  
+    ));
   } else {
     dayjsDate = dayjs(new Date(
       dateTimeArray[0],       // year

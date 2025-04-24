@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { adminGetBailBonds } from "../api/api";
+import Spinner from "./Spinner";  // <- import shared Spinner
+import { toast, ToastContainer } from "react-toastify";
+import { dateTimeArrayToDate } from "../utils/getCurrentDateTime";
 
 const initialData = [
   { id: "001", name: "John Doe", date: "2023-09-15", amount: "₦5,000", status: "Pending" },
@@ -12,10 +16,13 @@ const initialData = [
 ];
 
 const BailBondTable = () => {
-  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
+  
 
   const handleStatusChange = (id, value) => {
     setData(prev =>
@@ -26,16 +33,36 @@ const BailBondTable = () => {
   };
 
   const filteredData = data.filter(row =>
-    row.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    row.id.includes(searchTerm)
+    row?.name?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+    row?.id?.includes(searchTerm)
   );
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
+    const fetchBailBonds = async () => {
+      setLoading(true);                     // ← start spinner
+      try {
+        const resp = await adminGetBailBonds();
+        setData(resp);
+      } catch (error) {
+        console.error('Error fetching bailbonds', error);
+        const msg = error.error || 'Failed to load bailbonds.';
+        toast.error(msg, { toastId: 'fetchBailBondError' });
+      } finally {
+        setLoading(false);                  // ← stop spinner
+      }
+    };
+  
+    useEffect(() => {
+      fetchBailBonds();
+    }, [])
+
   return (
     <div className="bailbond-container">
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <h2 className="bailbond-title">Bail bond</h2>
       <div className="bailbond-search">
         <input
@@ -48,42 +75,50 @@ const BailBondTable = () => {
       </div>
 
       <div className="bailbond-table-wrapper">
-        <table className="bailbond-table">
-          <thead>
-            <tr>
-              <th>Submission ID</th>
-              <th>Submitter</th>
-              <th>Submission Date</th>
-              <th>Bond Amount</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedData.map((row, index) => (
-              <tr key={index}>
-                <td className="bail-id">{row.id}</td>
-                <td className="bail-name">{row.name}</td>
-                <td className="bail-date">{row.date}</td>
-                <td className="bail-amount">{row.amount}</td>
-                <td>
-                  <select
-                    className="bailbond-status"
-                    value={row.status}
-                    onChange={(e) => handleStatusChange(row.id, e.target.value)}
-                  >
-                    <option>Pending</option>
-                    <option>Approved</option>
-                    <option>Rejected</option>
-                  </select>
-                </td>
-                <td>
-                  <Link to="/bailbonddownload"><button className="bailbond-view">View</button></Link>
-                </td>
+        {/* Spinner shows while loading */}
+        <Spinner loading={loading} height="200px" />
+
+        {!loading && (
+            <table className="bailbond-table">
+            <thead>
+              <tr>
+                <th>Submission ID</th>
+                <th>Submitter</th>
+                <th>Submission Date</th>
+                <th>Bond Amount</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {paginatedData.map((row, index) => (
+                <tr key={index}>
+                  <td className="bail-id">{row.id}</td>
+                  <td className="bail-name">{row.fullName}</td>
+                  <td className="bail-date">{dateTimeArrayToDate(row?.dateOfCurrentArrest)}</td>
+                  <td className="bail-amount">{row.totalAmount ?? 0}</td>
+                  <td className="bailbond-status">
+                    {/* <select
+                      className="bailbond-status"
+                      value={row.status}
+                      onChange={(e) => handleStatusChange(row.id, e.target.value)}
+                    >
+                      <option>Pending</option>
+                      <option>Approved</option>
+                      <option>Rejected</option>
+                    </select> */}
+                    {row.approved && !row.rejected ? "Approved" : row.rejected && !row.approved ? "Rejected" : "Pending"}
+                  </td>
+                  <td>
+                    <Link to="/admin/bailbonddownload"><button className="bailbond-view">View</button></Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          
+        )}
+      
         <div className="bailbond-pagination">
           <span className="bailbond-page-info">
             Page {currentPage} of {totalPages}
@@ -105,6 +140,7 @@ const BailBondTable = () => {
             </button>
           </div>
         </div>
+
       </div>
     </div>
   );

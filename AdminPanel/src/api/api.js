@@ -89,9 +89,19 @@ export const adminGetUsers = async (pageNum=1, limit=15) => {
 
 /** Admin Get Lawyers */
 export const adminGetLawyers = async (pageNum=1, limit=15) => {
-    return handleAdminRequest('GET', `service-provider/lawyer/profile/?pageNumber=${pageNum}&pageSize=${limit}`)
+    // return handleAdminRequest('GET', `service-provider/lawyer/profile/?pageNumber=${pageNum}&pageSize=${limit}`)
+    return handleAdminRequest('GET', `admin/get-all-lawyers-profile?pageNumber=${pageNum}&pageSize=${limit}`)
 }
 
+/** Admin add Lawyers */
+export const adminAddLawyer = async (formData) => {
+    return handleAdminRequest('POST', 'admin/create-lawyer-profile', formData);
+}
+
+/** Admin Get Bailbond */
+export const adminGetBailBonds = async () => {
+    return handleAdminRequest('GET', 'admin/get-bail-bond-requests')
+}
 
 /** handleAdminForgotPassword  */
 export const handleAdminForgotPassword = async (formData) => {

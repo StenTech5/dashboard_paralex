@@ -238,8 +238,8 @@ const LawyerTable = () => {
 
   const filteredLawyers = lawyers.filter(
     lawyer =>
-      lawyer?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lawyer?.email?.toLowerCase().includes(searchTerm.toLowerCase())
+      lawyer?.user?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      lawyer?.user?.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredLawyers.length / itemsPerPage);
@@ -258,7 +258,9 @@ const LawyerTable = () => {
     setBgLoading(true);
     try {
       const resp = await adminGetLawyers(page, limit);
-      setLawyers(resp.reverse());
+      console.log("Lawyers ", resp);
+      const data = resp.data;
+      setLawyers(data);
     } catch (error) {
       const msg = error.error || 'Something went wrong retrieving lawyers.';
       toast.error(msg, { toastId: 'fetchLawyersError' });
