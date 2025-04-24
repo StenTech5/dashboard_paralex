@@ -19,6 +19,7 @@ import DeliveryRequest from "./pages/DeliveryRequest";
 import Transactions from "./pages/Transactions";
 import BailBondDownload from "./pages/BailBondDownload";
 import PostNewsForm from "./pages/PostNewsForm";
+import AdminSettings from "./pages/AdminSettings";
 
 export const router = createBrowserRouter([
   // Route definition
@@ -57,7 +58,7 @@ export const router = createBrowserRouter([
       {
         path: "settings",
         // element: <AdminSettings />,
-        element: <h1> Admin Settings</h1>,
+        element: <AdminSettings/>,
       },
       {
         path: "bailbond",

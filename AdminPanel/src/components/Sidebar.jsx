@@ -51,7 +51,7 @@ const Sidebar = ({ open, setOpen }) => {
 
       <div className="sidebar-top">
         <div className="sidebar-logo">
-          <Link to="/"><img src={logo} alt="Logo" className="logo-img" /></Link>
+          <Link to="/admin/dashboard"><img src={logo} alt="Logo" className="logo-img" /></Link>
         </div>
 
         <nav className="sidebar-nav">

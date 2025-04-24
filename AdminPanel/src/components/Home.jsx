@@ -126,28 +126,28 @@ import NewUsersTable from './NewUsersTable';
 const statData = [
   {
     title: 'Users',
-    count: '300',
+    count: '40',
     icon: <PiUsersThreeFill />,
     class: 'bg-users',
     route: '/admin/users',
   },
   {
     title: 'Lawyers',
-    count: '140',
+    count: '40',
     icon: <GiClawHammer />,
     class: 'bg-lawyers',
     route: '/admin/lawyers',
   },
   {
     title: 'Bail Bond',
-    count: '257',
+    count: '40',
     icon: <IoMdNotifications />,
     class: 'bg-bailbond',
     route: '/admin/bailbond',
   },
   {
     title: 'Drivers',
-    count: '89',
+    count: '40',
     icon: <BiSolidBusSchool />,
     class: 'bg-drivers',
     route: '/admin/drivers',

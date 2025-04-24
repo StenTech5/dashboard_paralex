@@ -1,113 +1,108 @@
-import React, { useState } from "react";
-import { FaTrashAlt, FaHome } from "react-icons/fa";
-import { Toaster, toast } from "react-hot-toast";
-import "../App.css";
+import React, { useState, useRef } from 'react';
+import '../App.css';
+import { AiOutlineHome, AiOutlineDelete, AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
 
-const AdminSettings = () => {
-  const [admins, setAdmins] = useState([
-    {
-      name: "Zainab Sidiku",
-      email: "zainab.sidiku@paralexlogistics.com",
-      id: "01",
-    },
-    {
-      name: "Osagiede Maxwell",
-      email: "maxwell.o@paralexlogistics.com",
-      id: "02",
-    },
-  ]);
+const initialAdmins = [
+  { id: '01', name: 'Zainab Sidiku', email: 'zainab.sidiku@paralexlogistics.com', avatar: null },
+  { id: '02', name: 'Osagiede Maxwell', email: 'maxwell.o@paralexlogistics.com', avatar: null },
+];
 
-  const [formData, setFormData] = useState({ name: "", email: "" });
+export default function AdminPage() {
+  const [admins, setAdmins] = useState(initialAdmins);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState('add');
+  const [currentAdmin, setCurrentAdmin] = useState({});
+  const fileInputRef = useRef();
 
-  const handleRemove = (id) => {
-    setAdmins((prev) => prev.filter((admin) => admin.id !== id));
+  const openAddModal = () => {
+    setModalMode('add');
+    setCurrentAdmin({ name: '', email: '', password: '', avatar: null });
+    setIsModalOpen(true);
   };
-
-  const handleChange = (e) => {
+  const openEditModal = admin => {
+    setModalMode('edit');
+    setCurrentAdmin({ ...admin, password: '' });
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+  const handleInputChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setCurrentAdmin(prev => ({ ...prev, [name]: value }));
   };
-
-  const handleSubmit = (e) => {
+  const handleAvatarChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => setCurrentAdmin(prev => ({ ...prev, avatar: reader.result }));
+      reader.readAsDataURL(file);
+    }
+  };
+  const handleSubmit = e => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) return;
-
-    const nextId = (admins.length + 1).toString().padStart(2, "0");
-    const newAdmin = {
-      id: nextId,
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-    };
-
-    setAdmins((prev) => [...prev, newAdmin]);
-    setFormData({ name: "", email: "" });
-    toast.success("Admin added successfully!");
+    if (modalMode === 'add') {
+      const newId = String(admins.length + 1).padStart(2, '0');
+      setAdmins(prev => [...prev, { id: newId, name: currentAdmin.name, email: currentAdmin.email, avatar: currentAdmin.avatar }]);
+    } else {
+      setAdmins(prev => prev.map(a => a.id === currentAdmin.id ? { ...a, name: currentAdmin.name, email: currentAdmin.email, avatar: currentAdmin.avatar } : a));
+    }
+    closeModal();
   };
+  const handleRemoveAdmin = id => setAdmins(prev => prev.filter(a => a.id !== id));
 
   return (
-    <div className="adminpage-wrapper">
-      <h2 className="adminpage-title">Admin Page</h2>
+    <div className="ap-container">
+      <header className="ap-header">
+        <h1 className="ap-title">Admin Page</h1>
+        <button className="ap-add-btn" onClick={openAddModal}>+ Add Admin</button>
+      </header>
 
-      <div className="adminpage-list">
-        {admins.map((admin) => (
-          <div key={admin.id} className="adminpage-card fixed-card-layout">
-            <div className="adminpage-info">
-              <div className="adminpage-id">{admin.id}</div>
-              <div>
-                <p className="adminpage-name">{admin.name}</p>
-                <p className="adminpage-email">{admin.email}</p>
+      <section className="ap-list">
+        {admins.map(admin => (
+          <div key={admin.id} className="ap-card">
+            <div className="ap-card-left">
+              <div className="ap-card-id">{admin.id}</div>
+              <div className="ap-card-info">
+                <div className="ap-card-name">{admin.name}</div>
+                <div className="ap-card-email">{admin.email}</div>
               </div>
             </div>
-
-            <div className="adminpage-role">
-              <FaHome className="adminpage-role-icon" /> <span>Admin</span>
+            <div className="ap-role-badge">
+              <AiOutlineHome size={18} /><span>Admin</span>
             </div>
-
-            <div className="adminpage-remove">
-              <button className="adminpage-remove-btn" onClick={() => handleRemove(admin.id)}>
-                <FaTrashAlt className="adminpage-remove-icon" /> Remove
+            <div className="ap-actions">
+              <button className="ap-action-btn" onClick={() => openEditModal(admin)}>
+                <AiOutlineEdit size={18} /><span>Edit</span>
+              </button>
+              <button className="ap-action-btn" onClick={() => handleRemoveAdmin(admin.id)}>
+                <AiOutlineDelete size={18} /><span>Remove</span>
               </button>
             </div>
           </div>
         ))}
-      </div>
+      </section>
 
-      <hr className="adminpage-separator" />
-
-      <div className="adminpage-form-wrapper">
-        <h3 className="adminpage-form-title">Add Admin</h3>
-        <form className="adminpage-form" onSubmit={handleSubmit} style={{ maxWidth: "384px", display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <div>
-            <label className="adminpage-label">Full name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="enter full name"
-              className="adminpage-input"
-            />
+      {isModalOpen && (
+        <div className="ap-modal-overlay">
+          <div className="ap-modal">
+            <button className="ap-close-btn" onClick={closeModal}><AiOutlineClose size={20} /></button>
+            <h2 className="ap-modal-title">{modalMode === 'add' ? 'Add Admin' : 'Account Setting'}</h2>
+            <form className="ap-form" onSubmit={handleSubmit}>
+              <div className="ap-avatar-section">
+                <div className="ap-avatar-circle">
+                  {currentAdmin.avatar ? <img src={currentAdmin.avatar} alt="avatar" /> : <span>{currentAdmin.name?.charAt(0) || 'A'}</span>}
+                </div>
+                <button type="button" className="ap-upload-btn" onClick={() => fileInputRef.current.click()}>Upload Image</button>
+                <input type="file" accept="image/*" ref={fileInputRef} onChange={handleAvatarChange} className="ap-hidden-input" />
+              </div>
+              <div className="ap-form-group"><label>Name</label><input type="text" name="name" value={currentAdmin.name} onChange={handleInputChange} required /></div>
+              <div className="ap-form-group"><label>Email</label><input type="email" name="email" value={currentAdmin.email} onChange={handleInputChange} required /></div>
+              <div className="ap-form-group"><label>Password</label><input type="password" name="password" value={currentAdmin.password} onChange={handleInputChange} /></div>
+              <button type="submit" className="ap-submit-btn">{modalMode === 'add' ? 'Add Admin' : 'Save Changes'}</button>
+            </form>
+            {modalMode === 'edit' && <button className="ap-delete-account" onClick={() => { handleRemoveAdmin(currentAdmin.id); closeModal(); }}>Delete Account</button>}
           </div>
-          <div>
-            <label className="adminpage-label">Official email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter email address"
-              className="adminpage-input"
-            />
-          </div>
-          <button className="adminpage-submit full-width-btn" type="submit">
-            + Add admin
-          </button>
-        </form>
-      </div>
-
-      <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+        </div>
+      )}
     </div>
   );
-};
-
-export default AdminSettings;
+}
