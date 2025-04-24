@@ -148,7 +148,7 @@ const DriversTable = () => {
                   <span className="driver-role-badge">{driver.role}</span>
                 </td>
                 <td className="driver-edit">
-                  <Link to="/driverprofile">
+                  <Link to={`/admin/driver/${driver.name}`}>
                     <FaEdit className="driver-edit-icon" />Edit
                   </Link>
                 </td>

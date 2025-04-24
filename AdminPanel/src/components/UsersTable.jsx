@@ -277,9 +277,9 @@ const UsersTable = () => {
 
       <div className="user-header">
         <h2 className="user-title">Users</h2>
-        <Link to="/admin/add-user">
+        {/* <Link to="/admin/add-user">
           <button className="user-add-btn">+ Add User</button>
-        </Link>
+        </Link> */}
       </div>
 
       <div className="user-search-box">
@@ -323,7 +323,7 @@ const UsersTable = () => {
                   <td className="user-email">{user.email}</td>
                   <td><span className="user-role-badge">{user.userType}</span></td>
                   <td className="user-edit">
-                    <Link to="/userprofile">
+                    <Link to={`/admin/user/${user?.id}`}>
                       <FaEdit className="user-edit-icon" /> Edit
                     </Link>
                   </td>
