@@ -122,6 +122,7 @@ import { IoMdNotifications } from 'react-icons/io';
 import { BiSolidBusSchool } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import NewUsersTable from './NewUsersTable';
+import { FaGavel } from 'react-icons/fa6';
 
 const statData = [
   {
@@ -134,7 +135,7 @@ const statData = [
   {
     title: 'Lawyers',
     count: '40',
-    icon: <GiClawHammer />,
+    icon:  <FaGavel />,
     class: 'bg-lawyers',
     route: '/admin/lawyers',
   },

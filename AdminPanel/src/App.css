@@ -573,19 +573,69 @@ textarea {
 }
 
 /* ===== SIDEBAR ===== */
-/* .sidebar {
-  width: 220px;
-  background-color: #3a004b;
-  color: white;
+.logout-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  padding: 16px 0;
-  transition: transform 0.3s ease;
-  position: relative;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
-} */
+}
+.logout-modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.logout-modal-title {
+  margin-bottom: 0.5rem;
+  color: #400945;
+  font-size: 1.25rem;
+}
+.logout-modal-message {
+  margin-bottom: 1rem;
+  color: #333;
+}
+.logout-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-confirm {
+  background: #400945;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-confirm:hover {
+  background: #53135a;
+}
+.logout-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  font-size: 0.775rem;
+}
+.logout-link:hover {
+  color: red;
+  background: none;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -705,7 +755,7 @@ textarea {
 }
 
 .admin-name {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 600;
   margin: 0;
   color: white;
@@ -3839,5 +3889,12 @@ textarea {
     transform: scale(1.02);
   }
 }
+
+.loader-container {
+  position: fixed;
+  inset: 0;
+  /* ... */
+}
+
 
 /* page loader ends  */
