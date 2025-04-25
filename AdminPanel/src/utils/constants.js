@@ -15,7 +15,8 @@ export const ADMIN_DRIVERS_URL = "/admin/drivers";
 export const ADMIN_BAILBOND_URL = "/admin/bailbond";
 export const ADMIN_LICSVERIFICATION_URL = "/admin/licsverification";
 export const ADMIN_BIMSSYSTEM_URL = "/admin/bims-system";
-export const ADMIN_VERIFYLAWYER_URL = "/admin/verify-lawyer";
+// export const ADMIN_VERIFYLAWYER_URL = "/admin/verify-lawyer";
+export const ADMIN_VERIFYLAWYER_URL = "https://www.nigerianbar.org.ng/find-a-lawyer";
 export const ADMIN_NOTIFICATIONS_URL = "/admin/notifications";
 
 
