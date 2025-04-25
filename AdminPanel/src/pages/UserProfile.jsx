@@ -54,6 +54,7 @@ const UserProfile = () => {
 
           <div className="form-buttons">
             <button className="update-btn">Update Profile</button>
+            <button className="btn purple">Block User</button>
             <button className="delete-btn">Delete Profile</button>
           </div>
         </div>

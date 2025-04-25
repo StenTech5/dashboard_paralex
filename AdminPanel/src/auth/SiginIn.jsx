@@ -114,7 +114,7 @@ const SignIn = () => {
           >
             {loading ? (
               <>
-                <FaSpinner className="spinner" /> Loading...
+                <FaSpinner className="spinner" /> Signin...
               </>
             ) : (
               "Sign In"

@@ -297,9 +297,9 @@ const LawyerProfile = () => {
           </div>
 
           <div className="button-row">
-            <button type="button" className="btn purple">Verify Lawyer</button>
-            <button type="submit" className="btn fuchsia">Update Profile</button>
-            <button type="button" className="btn red">Remove Lawyer</button>
+            <button type="button" className="btn purple">Enable</button>
+            <button type="submit" className="btn purple">Block</button>
+            <button type="button" className="btn red">Update Profile</button>
           </div>
         </form>
       </div>
