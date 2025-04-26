@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaUser } from "react-icons/fa";
 import "../App.css";
+import { adminGetNotifications } from "../api/api";
+import { toast, ToastContainer } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 const allNotifications = [
   {
@@ -56,19 +59,49 @@ const allNotifications = [
 ];
 
 const NotificationPage = () => {
-  const [visibleCount, setVisibleCount] = React.useState(4);
-  const visibleNotifications = allNotifications.slice(0, visibleCount);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [loading, setLoading] = useState(true);
+  const [notifications, setNotifications] = useState([]);   //Initial notifications state
+  // const visibleNotifications = allNotifications.slice(0, visibleCount);
+  const visibleNotifications = notifications.slice(0, visibleCount);
 
   const loadMore = () => {
     setVisibleCount((prev) => prev + 2);
   };
 
+   const fetchAdminNotifications = async () => {
+  
+      setLoading(true);
+      try {
+        const resp = await adminGetNotifications();
+        console.log("Admin notifications", resp);
+        setNotifications(resp);
+        
+      } catch (error) {
+        console.error("Error from fetching notifications ", error);
+        const errorMessage = error.error || "Failed to fetch admin notifications";
+        toast.error(errorMessage);
+      } finally {
+        setLoading(false);
+      }
+    }
+  
+    useEffect(() => {
+      fetchAdminNotifications();
+    }, []);
+  
+
   return (
     <div className="notification-wrapper">
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <h2 className="notification-title">Notifications</h2>
 
       <div className="notification-list">
-        {visibleNotifications.map((n) => (
+        {/* Shared Spinner */}
+        <Spinner loading={loading} height="200px" />
+                
+        {!loading && visibleNotifications.map((n) => (
           <div key={n.id} className="notification-card">
             <div className="notification-avatar-wrapper">
               {n.avatar ? (
@@ -98,6 +131,7 @@ const NotificationPage = () => {
             </div>
           </div>
         ))}
+
       </div>
 
       <div className="notification-footer">

@@ -1,6 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../App.css';
 import { AiOutlineHome, AiOutlineDelete, AiOutlineClose, AiOutlineEdit } from 'react-icons/ai';
+import { adminGetAllAdmins, adminGetNotifications } from '../api/api';
+import { toast, ToastContainer } from 'react-toastify';
+import { getDisplayName } from '../utils/userUtils';
+import Spinner from '../components/Spinner';
 
 const initialAdmins = [
   { id: '01', name: 'Zainab Sidiku', email: 'zainab.sidiku@paralexlogistics.com', avatar: null },
@@ -8,11 +12,35 @@ const initialAdmins = [
 ];
 
 export default function AdminPage() {
-  const [admins, setAdmins] = useState(initialAdmins);
+
+  const [loading, setLoading] = useState(true);
+  // const [admins, setAdmins] = useState(initialAdmins);
+  const [admins, setAdmins] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState('add');
   const [currentAdmin, setCurrentAdmin] = useState({});
   const fileInputRef = useRef();
+
+  const fetchAdmins = async () => {
+
+    setLoading(true);
+    try {
+      const resp = await adminGetAllAdmins();
+      console.log("Admins response", resp);
+      setAdmins(resp);
+      
+    } catch (error) {
+      console.error("Error from fetching admins", error);
+      const errorMessage = error.error || "Failed to fetch admins";
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchAdmins();
+  }, []);
 
   const openAddModal = () => {
     setModalMode('add');
@@ -51,18 +79,23 @@ export default function AdminPage() {
 
   return (
     <div className="ap-container">
+      <ToastContainer position="top-right" autoClose={3000} />
+      
       <header className="ap-header">
         <h1 className="ap-title">Admin Page</h1>
         <button className="ap-add-btn" onClick={openAddModal}>+ Add Admin</button>
       </header>
 
       <section className="ap-list">
-        {admins.map(admin => (
+        {/* Shared Spinner */}
+        <Spinner loading={loading} height="200px" />
+        
+        {!loading && admins.map(admin => (
           <div key={admin.id} className="ap-card">
             <div className="ap-card-left">
-              <div className="ap-card-id">{admin.id}</div>
+              <div className="ap-card-id">{(admin.id).substr(0, 4)}...</div>
               <div className="ap-card-info">
-                <div className="ap-card-name">{admin.name}</div>
+                <div className="ap-card-name">{getDisplayName(admin)}</div>
                 <div className="ap-card-email">{admin.email}</div>
               </div>
             </div>
@@ -79,6 +112,7 @@ export default function AdminPage() {
             </div>
           </div>
         ))}
+        
       </section>
 
       {isModalOpen && (
