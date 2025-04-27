@@ -52,7 +52,7 @@ export default function Header({ toggleSidebar }) {
 
         <div className="header-controls">
           <div className="header-icon header-notification">
-            <Link to="/notifications">
+            <Link to="/admin/notifications">
               <IoMdNotificationsOutline />
             </Link>
           </div>
@@ -74,7 +74,7 @@ export default function Header({ toggleSidebar }) {
                     </div>
                   </div>
                   <hr className="profile-divider" />
-                  <Link to="/settings">
+                  <Link to="/admin/settings">
                     <div className="profile-item">
                       <FaCog className="profile-item-icon" />
                       <span>Account Setting</span>

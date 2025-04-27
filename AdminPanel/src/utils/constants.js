@@ -13,6 +13,7 @@ export const ADMIN_ADD_USERS_URL = "/admin/add-user";
 export const ADMIN_LAWYERS_URL = "/admin/lawyers";
 export const ADMIN_DRIVERS_URL = "/admin/drivers";
 export const ADMIN_BAILBOND_URL = "/admin/bailbond";
+export const ADMIN_LOGISTICS_URL = "/admin/logistics";
 export const ADMIN_LICSVERIFICATION_URL = "/admin/licsverification";
 export const ADMIN_BIMSSYSTEM_URL = "/admin/bims-system";
 // export const ADMIN_VERIFYLAWYER_URL = "/admin/verify-lawyer";

@@ -131,6 +131,7 @@ import {
   ADMIN_DRIVERS_URL,
   ADMIN_LAWYERS_URL,
   ADMIN_LICSVERIFICATION_URL,
+  ADMIN_LOGISTICS_URL,
   ADMIN_SETTINGS_URL,
   ADMIN_USERS_URL,
   ADMIN_VERIFYLAWYER_URL
@@ -143,6 +144,7 @@ const navLinks = [
   { to: ADMIN_USERS_URL, label: 'Users', icon: <PiUsersThreeFill />, external: false },
   { to: ADMIN_DRIVERS_URL, label: 'Drivers', icon: <BiSolidBusSchool />, external: false },
   { to: ADMIN_BAILBOND_URL, label: 'Bail Bond', icon: <IoMdNotifications />, external: false },
+  { to: ADMIN_LOGISTICS_URL, label: 'Logistics', icon: <FaUserShield />, external: false },
   { to: ADMIN_LICSVERIFICATION_URL, label: 'LICS Verification', icon: <IoIosCheckmarkCircle />, external: true },
   { to: ADMIN_BIMSSYSTEM_URL, label: 'BIMS', icon: <BsFillGearFill />, external: false },
   { to: '/admin/transaction', label: 'Transactions', icon: <GrTransaction />, external: false },

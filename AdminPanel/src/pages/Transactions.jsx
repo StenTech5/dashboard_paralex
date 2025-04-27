@@ -36,7 +36,7 @@ const Transactions = () => {
   return (
     <div className="dr-wrapper">
       <div className="dr-header">
-        <h2 className="dr-title">Delivery Request</h2>
+        <h2 className="dr-title">Transactions</h2>
         <button
           onClick={() => setShowModal(true)}
           className="dr-assign-btn"
