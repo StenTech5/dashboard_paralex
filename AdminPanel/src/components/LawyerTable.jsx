@@ -110,7 +110,7 @@ const LawyerTable = () => {
                   <td className="lawyer-email">{lawyer.user?.email}</td>
                   <td><span className="lawyer-role-badge">{lawyer?.user?.userType}</span></td>
                   <td className="lawyer-edit">
-                    <Link to={`/admin/lawyer/${lawyer.id}`} className="lawyer-edit">
+                    <Link to={`/admin/lawyer/${lawyer?.user?.id}`} className="lawyer-edit">
                       <FaEdit className="lawyer-edit-icon" /> Edit
                     </Link>
                   </td>

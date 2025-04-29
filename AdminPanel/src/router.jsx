@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
         element: <AddLawyer />,
       },
       {
-        path: "lawyer/:lawyerId", // Lawyer details page
+        path: "lawyer/:userId", // Lawyer details page
         element: <LawyerProfile />,
       },
       {

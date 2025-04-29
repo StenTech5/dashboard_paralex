@@ -69,8 +69,8 @@ export default function Header({ toggleSidebar }) {
                       <span className="profile-status-dot" />
                     </div>
                     <div className="profile-info">
-                      <div className="profile-name">Zainab S.</div>
-                      <div className="profile-email">zainab.sidiku@paralexlogistics.com</div>
+                      <div className="profile-name">Admin</div>
+                      <div className="profile-email">info@paralexlogistics.com </div>
                     </div>
                   </div>
                   <hr className="profile-divider" />

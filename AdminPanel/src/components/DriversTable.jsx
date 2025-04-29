@@ -10,14 +10,14 @@ const driversData = [
     date: '2025-04-18',
     email: 'elopez@yahoo.com',
     role: 'Driver',
-    selected: true,
+    selected: false,
   },
   {
     name: 'Matthew Martinez',
     date: '2025-03-14',
     email: 'mmartinez1997@gmail.com',
     role: 'Driver',
-    selected: true,
+    selected: false,
   },
   {
     name: 'Elizabeth Hall',
@@ -61,20 +61,20 @@ const driversData = [
     role: 'Driver',
     selected: false,
   },
-  {
-    name: 'Jane Doe',
-    date: '2024-08-22',
-    email: 'janedoe@gmail.com',
-    role: 'Driver',
-    selected: false,
-  },
-  {
-    name: 'Peter Griffin',
-    date: '2024-07-01',
-    email: 'pgriffin@gmail.com',
-    role: 'Driver',
-    selected: false,
-  },
+  // {
+  //   name: 'Jane Doe',
+  //   date: '2024-08-22',
+  //   email: 'janedoe@gmail.com',
+  //   role: 'Driver',
+  //   selected: false,
+  // },
+  // {-
+  //   name: 'Peter Griffin',
+  //   date: '2024-07-01',
+  //   email: 'pgriffin@gmail.com',
+  //   role: 'Driver',
+  //   selected: false,
+  // },
 ];
 
 const DriversTable = () => {

@@ -55,7 +55,7 @@ const handleRequestError = (error) => {
         throw {
             success: false,
             status: error.response?.status || 400,
-            error: error.response.data?.error || "An error occurred",
+            error: error.response.data?.error || error.response?.data || "An error occurred",
             errors: error.response.data?.errors || []
         }
     } else if (error.code === "ECONNABORTED"){
@@ -116,6 +116,16 @@ export const adminGetNotifications = async () => {
 /** handleAdmindminNews  */
 export const handleAdminAddNews= async (formData) => {
     return handleAdminRequest('POST', 'api/news/post', formData);
+}
+
+/** Admin Get Lawyer by User Id */
+export const adminGetLawyerByUserId = async (userId) => {
+    return handleAdminRequest('GET', `admin/get-lawyer-by-userId?userId=${userId}`)
+}
+
+/** Admin Get User by User Id */
+export const adminGetUserByUserId = async (userId) => {
+    return handleAdminRequest('GET', `api/v1/auth/get-user-by-id/${userId}`)
 }
 
 /** handleAdminForgotPassword  */

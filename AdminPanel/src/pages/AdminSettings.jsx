@@ -27,7 +27,7 @@ export default function AdminPage() {
     try {
       const resp = await adminGetAllAdmins();
       console.log("Admins response", resp);
-      setAdmins(resp);
+      setAdmins(resp?.reverse());
       
     } catch (error) {
       console.error("Error from fetching admins", error);
